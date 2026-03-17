@@ -16,6 +16,10 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+
+
 // 1. Database — your existing SQL Server setup (unchanged)
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -74,6 +78,13 @@ builder.Services.AddOpenApi(options =>
 
 var app = builder.Build();
 
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor |
+                       Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+});
+
+
 // Configure pipeline
 if (app.Environment.IsDevelopment())
 {
@@ -82,11 +93,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseDefaultFiles();
-app.UseForwardedHeaders(new ForwardedHeadersOptions
-{
-    ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor |
-                       Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
-});
+
 app.UseCors("AllowAll");     // Must be BEFORE UseAuthentication
 app.UseAuthentication();
 app.UseAuthorization();

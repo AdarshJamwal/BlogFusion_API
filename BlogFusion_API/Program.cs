@@ -82,6 +82,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseDefaultFiles();
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor |
+                       Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+});
 app.UseCors("AllowAll");     // Must be BEFORE UseAuthentication
 app.UseAuthentication();
 app.UseAuthorization();

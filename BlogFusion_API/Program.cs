@@ -66,7 +66,7 @@ builder.Services.AddHttpClient();   // Required by AIContentService
 // 7. CORS
 builder.Services.AddCors(opt =>
     opt.AddPolicy("AllowAll", p =>
-        p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+        p.WithOrigins("http://localhost:5173", "https://blog-fusion-front-end.vercel.app").AllowAnyMethod().AllowAnyHeader()));
 
 // 8. Controllers + your existing Scalar/OpenAPI setup (unchanged)
 builder.Services.AddControllers();
@@ -94,7 +94,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseDefaultFiles();
 
-app.UseCors("AllowAll");     // Must be BEFORE UseAuthentication
+app.UseCors("AllowAll");     
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

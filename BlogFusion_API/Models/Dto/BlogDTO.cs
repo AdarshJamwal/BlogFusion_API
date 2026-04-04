@@ -2,7 +2,7 @@
 
 namespace BlogFusion_API.Models.Dto
 {
-    // Used when CREATING a new blog (image is a file, not a URL yet)
+  
     public class CreateBlogDTO
     {
         [Required]
@@ -22,7 +22,7 @@ namespace BlogFusion_API.Models.Dto
         public bool? IsPublished { get; set; }
     }
 
-    // Used when RETURNING blog data to the client
+  
     public class BlogDTO
     {
         public int Id { get; set; }
@@ -36,7 +36,7 @@ namespace BlogFusion_API.Models.Dto
         public DateTime UpdatedAt { get; set; }
     }
 
-    // Used when a visitor submits a new comment
+   
     public class AddCommentDTO
     {
         [Required] public int BlogId { get; set; }
@@ -49,7 +49,7 @@ namespace BlogFusion_API.Models.Dto
         public string Content { get; set; } = string.Empty;
     }
 
-    // Used when returning comment data
+
     public class CommentDTO
     {
         public int Id { get; set; }
@@ -61,7 +61,7 @@ namespace BlogFusion_API.Models.Dto
         public DateTime UpdatedAt { get; set; }
     }
 
-    // Admin panel: comment WITH blog info joined (mirrors SQL JOIN query)
+  
     public class CommentWithBlogDTO
     {
         public int Id { get; set; }

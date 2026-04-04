@@ -16,7 +16,7 @@ namespace BlogFusion_API.Data
         {
             base.OnModelCreating(modelBuilder); // Required — sets up Identity tables
 
-            // blogs table — maps C# PascalCase props to SQL snake_case columns
+          
             modelBuilder.Entity<Blog>(entity =>
             {
                 entity.ToTable("blogs");
@@ -47,7 +47,7 @@ namespace BlogFusion_API.Data
                 entity.Property(c => c.UpdatedAt).HasColumnName("updated_at")
                     .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                // CASCADE DELETE: deleting a blog removes its comments too
+               
                 entity.HasOne(c => c.Blog)
                       .WithMany(b => b.Comments)
                       .HasForeignKey(c => c.BlogId)

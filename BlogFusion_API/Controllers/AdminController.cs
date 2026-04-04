@@ -85,8 +85,6 @@ namespace BlogFusion_API.Controllers
 
 
 
-        // GET /api/admin/blogs
-        // Node.js: adminRouter.get('/blogs', auth, getAllBlogsAdmin)
         [HttpGet("blogs")]
         public async Task<IActionResult> GetAllBlogsAdmin()
         {
@@ -99,8 +97,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // GET /api/admin/comments
-        // Node.js: adminRouter.get('/comments', auth, getAllComments)
+      
         [HttpGet("comments")]
         public async Task<IActionResult> GetAllComments()
         {
@@ -113,8 +110,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // DELETE /api/admin/comment/{id}
-        // Node.js: adminRouter.post('/delete-comment', auth, deleteCommentById)
+   
         [HttpDelete("comment/{id:int}")]
         public async Task<IActionResult> DeleteComment(int id)
         {
@@ -135,8 +131,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // PUT /api/admin/comment/approve/{id}
-        // Node.js: adminRouter.post('/approve-comment', auth, approveCommentById)
+   
         [HttpPut("comment/approve/{id:int}")]
         public async Task<IActionResult> ApproveComment(int id)
         {
@@ -157,8 +152,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // GET /api/admin/dashboard
-        // Node.js: adminRouter.get('/dashboard', auth, getDashboard)
+     
         [HttpGet("dashboard")]
         public async Task<IActionResult> GetDashboard()
         {

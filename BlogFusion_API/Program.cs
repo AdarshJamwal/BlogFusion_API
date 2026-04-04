@@ -20,17 +20,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 
-// 1. Database — your existing SQL Server setup (unchanged)
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnections"));
 });
 
-// 2. Identity (unchanged)
+
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// 3. JWT (unchanged — your original version kept)
+
 var key = builder.Configuration.GetValue<string>("ApiSetting:Secret");
 builder.Services.AddAuthentication(u =>
 {
@@ -51,10 +51,10 @@ builder.Services.AddAuthentication(u =>
     };
 });
 
-// 4. AutoMapper — scans MappingProfile for all Blog/Comment mappings
+
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-// 5. Repositories
+
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
@@ -68,7 +68,7 @@ builder.Services.AddCors(opt =>
     opt.AddPolicy("AllowAll", p =>
         p.WithOrigins("http://localhost:5173", "https://blog-fusion-front-end.vercel.app").AllowAnyMethod().AllowAnyHeader()));
 
-// 8. Controllers + your existing Scalar/OpenAPI setup (unchanged)
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi(options =>
@@ -100,7 +100,7 @@ app.UseAuthorization();
 app.MapControllers();
 app.Run();
 
-// Your existing BearerSecuritySchemeTransformer (unchanged)
+
 internal sealed class BearerSecuritySchemeTransformer(
     Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider authenticationSchemeProvider)
     : IOpenApiDocumentTransformer

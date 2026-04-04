@@ -21,10 +21,10 @@ namespace BlogFusion_API.Services
 
         public async Task<string> GenerateContentAsync(string prompt)
         {
-            // Same suffix as Node.js: prompt + ' Generate a blog content for this topic...'
+         
             var fullPrompt = $"{prompt} Generate a blog content for this topic in simple text format";
 
-            // Build the request body in Gemini REST API format
+         
             var body = new
             {
                 contents = new[]

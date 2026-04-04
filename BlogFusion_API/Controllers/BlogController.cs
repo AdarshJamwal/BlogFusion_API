@@ -33,9 +33,6 @@ namespace BlogFusion_API.Controllers
             _mapper = mapper;
         }
 
-        // POST /api/blog/add
-        // Node.js: blogRouter.post("/add", upload.single('image'), auth, createBlog)
-        // Accepts multipart/form-data with fields + an image file
         [HttpPost("add")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateBlog([FromForm] CreateBlogDTO blogDto, IFormFile image)
@@ -63,8 +60,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // GET /api/blog/all
-        // Node.js: blogRouter.get("/all", getAllBlogs)
+     
         [HttpGet("all")]
         public async Task<IActionResult> GetAllBlogs()
         {
@@ -77,8 +73,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // GET /api/blog/{blogId}
-        // Node.js: blogRouter.get("/:blogId", getBlogById)
+      
         [HttpGet("{blogId:int}")]
         public async Task<IActionResult> GetBlogById(int blogId)
         {
@@ -98,8 +93,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // DELETE /api/blog/delete/{id}
-        // Node.js: blogRouter.post("/delete", auth, deleteBlogById)
+   
         [HttpDelete("delete/{id:int}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteBlog(int id)
@@ -119,8 +113,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // PUT /api/blog/toggle-publish/{id}
-        // Node.js: blogRouter.post('/toggle-publish', auth, togglePublish)
+ 
         [HttpPut("toggle-publish/{id:int}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> TogglePublish(int id)
@@ -140,8 +133,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // POST /api/blog/add-comment
-        // Node.js: blogRouter.post('/add-comment', addComment)
+ 
         [HttpPost("add-comment")]
         public async Task<IActionResult> AddComment([FromBody] AddCommentDTO dto)
         {
@@ -168,8 +160,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // GET /api/blog/{blogId}/comments
-        // Node.js: blogRouter.post('/comments', getBlogComments)
+   
         [HttpGet("{blogId:int}/comments")]
         public async Task<IActionResult> GetBlogComments(int blogId)
         {
@@ -182,8 +173,7 @@ namespace BlogFusion_API.Controllers
             });
         }
 
-        // POST /api/blog/generate
-        // Node.js: blogRouter.post('/generate', auth, generateContent)
+   
         [HttpPost("generate")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GenerateContent([FromBody] GenerateContentDTO dto)
